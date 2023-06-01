@@ -35,6 +35,8 @@ img, picture {
 // box-sizing settings
 html {
   box-sizing: border-box;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 *, *:before, *:after {
   box-sizing: inherit;
