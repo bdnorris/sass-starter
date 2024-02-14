@@ -61,6 +61,16 @@
   overflow: hidden;
 }
 
+// BREAKPOINTS
+
+$breakpoints: (
+  small: 0,
+  medium: $medium,
+  large: $large,
+  xlarge: $xlarge,
+  xxlarge: $xxlarge
+);
+
 @mixin breakpoint($values...) {
   // get the first value passed to the mixin
   $value: nth($values, 1);
