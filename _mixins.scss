@@ -106,3 +106,34 @@
   height:   1px;
   overflow: hidden;
 }
+
+@mixin breakpoint($values...) {
+  // get the first value passed to the mixin
+  $value: nth($values, 1);
+  // Direction of media query (up, down, or to)
+  $direction: if(length($values) > 1, nth($values, 2), false);
+  // if to, then get the third value
+  $lastValue: if(length($values) > 2, nth($values, 3), false);
+  // get the actual matching value from the list
+  $str: map-get($breakpoints, $value);
+  // if it's not in the list, then let's just used what was passed directly
+  @if ($str) {
+    $str: $str;
+  }
+  @else {
+    $str: $value;
+  }
+  @if ($direction == "down") {
+    @media screen and (max-width: #{$str}) {
+      @content;
+    }
+  } @elseif ($direction == "to") {
+    @media screen and (min-width: #{$str}) and (max-width: #{map-get($breakpoints, $lastValue)}) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: #{$str}) {
+      @content;
+    }
+  }
+}
