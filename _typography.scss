@@ -2,6 +2,10 @@ h1, h2, h3, h4, h5, h6 {
   color: $text;
 }
 
+h1, h2 {
+  text-wrap: balance;
+}
+
 // Scale based on Jason Pamental's
 // http://typecast.com/blog/a-more-modern-scale-for-web-typography
 
