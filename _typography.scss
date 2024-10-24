@@ -79,6 +79,7 @@ p, .p {
   line-height: 1.25;
   font-size: em(16);
   max-width: 32em;
+  text-wrap: pretty;
   @include breakpoint(large) {
     line-height: 1.375;
   }
