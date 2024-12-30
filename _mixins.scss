@@ -30,10 +30,18 @@
 }
 
 // New version of the above using max()
-@mixin max-width-variable($max: $global-max-width, $block-padding: 1em) {
-  padding: $block-padding unquote("max(1.5rem, 50vw - " + $max + " / 2)");
+@mixin max-width-variable($max: $global-max-width, $block-padding: false) {
+  @if $block-padding {
+    padding: $block-padding unquote("max(1.5rem, 50vw - " + $max + " / 2)");
+  } @else {
+    padding-inline: unquote("max(1.5rem, 50vw - " + $max + " / 2)");
+  }
   @include breakpoint ($max, up) {
-    padding: $block-padding unquote("max(2rem, 50vw - " + $max + " / 2)");
+    @if $block-padding {
+      padding: $block-padding unquote("max(2rem, 50vw - " + $max + " / 2)");
+    } @else {
+      padding-inline: unquote("max(2rem, 50vw - " + $max + " / 2)");
+    }
   }
 }
 
