@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $red: #931621;
 $indigo: #28464B;
 $green: #2C8C99;
@@ -17,4 +19,4 @@ $error: $red;
 $primary: $indigo;
 $secondary: $green;
 $clickable: $red;
-$clickable-hover: lighten($red, 20%);
+$clickable-hover: color.scale($red, $lightness: 20%);

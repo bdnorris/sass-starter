@@ -1,3 +1,5 @@
+@use 'variables';
+@use 'colors';
 // * base styles
 
 // Animate scrolling only if users don’t prefer reduced motion
@@ -8,10 +10,10 @@
 }
 
 body {
-  font-family: $sans;
-  font-size: $browser-context * 1px; // ! the multiplication enforces pixels, even if you don't specify
-  color: $text;
-  background-color: $llgray;
+  font-family: variables.$sans;
+  font-size: variables.$browser-context * 1px; // ! the multiplication enforces pixels, even if you don't specify
+  color: colors.$text;
+  background-color: colors.$llgray;
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
