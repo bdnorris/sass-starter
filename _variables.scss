@@ -20,8 +20,8 @@ $serif: sans-serif;
 $default-timing: 200ms;
 
 // Layers, add more in between breakpoints if you need. 
-// use map-get to access. 
-// z-index: map-get($z, 1)
+// use map.get to access. 
+// z-index: map.get($z, 1)
 // https://sass-lang.com/documentation/functions/map#map-get
 $z: (
   1: 10,
