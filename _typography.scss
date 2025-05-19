@@ -83,6 +83,11 @@ p, .p {
   line-height: 1.25;
   font-size: em(16);
   max-width: 32em;
+	margin-block: 0.25em 0.333em;
+  	// if the next sibling is not a p
+	&:not(:has(+ p)) {
+		margin-block-end: 1em;
+	}
   @include mixins.breakpoint(large) {
     line-height: 1.375;
   }
