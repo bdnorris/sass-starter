@@ -1,6 +1,7 @@
 @use 'colors';
 @use 'variables';
 @use 'mixins';
+@use 'functions';
 
 h1, h2, h3, h4, h5, h6 {
   color: colors.$text;
@@ -18,13 +19,13 @@ h1, .h1 {
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -1.5px;
-  font-size: em(32);
+  font-size: functions.em(32);
   @include mixins.breakpoint(large) {
-    font-size: em(40);
+    font-size: functions.em(40);
     line-height: 1.125;
   }
   @include mixins.breakpoint(xlarge) {
-    font-size: em(48);
+    font-size: functions.em(48);
     line-height: 1.05;
   }
 }
@@ -34,13 +35,13 @@ h2, .h2 {
   font-weight: 800;
   line-height: 1.153;
   letter-spacing: -0.5px;
-  font-size: em(26);
+  font-size: functions.em(26);
   @include mixins.breakpoint(large) {
-    font-size: em(32);
+    font-size: functions.em(32);
     line-height: 1.25;
   }
   @include mixins.breakpoint(xlarge) {
-    font-size: em(36);
+    font-size: functions.em(36);
   }
 }
 
@@ -49,13 +50,13 @@ h3, .h3 {
   font-weight: 800;
   line-height: 1.36;
   letter-spacing: 0;
-  font-size: em(22);
+  font-size: functions.em(22);
   @include mixins.breakpoint(large) {
-    font-size: em(24);
+    font-size: functions.em(24);
     line-height: 1.25;
   }
   @include mixins.breakpoint(xlarge) {
-    font-size: em(28);
+    font-size: functions.em(28);
   }
 }
 
@@ -64,10 +65,10 @@ h4, .h4 {
   font-weight: 800;
   line-height: 1.111;
   letter-spacing: 0.25px;
-  font-size: em(18);
+  font-size: functions.em(18);
   color: colors.$text-light;
   @include mixins.breakpoint(large) {
-    font-size: em(18);
+    font-size: functions.em(18);
     line-height: 1.222;
   }
 }
@@ -81,7 +82,7 @@ p, .p {
   font-weight: 400;
   color: colors.$text;
   line-height: 1.25;
-  font-size: em(16);
+  font-size: functions.em(16);
   max-width: 32em;
 	margin-block: 0.25em 0.333em;
   	// if the next sibling is not a p
