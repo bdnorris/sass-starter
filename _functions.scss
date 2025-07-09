@@ -46,3 +46,18 @@
 
     @return $string;
 }
+
+
+// https://css-tricks.com/snippets/sass/px-to-em-functions/
+// Use Ems, but no math to do when working from design programs
+@function em($pixels, $context: variables.$browser-context) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+
+    @return math.div($pixels, $context) * 1em;
+}
