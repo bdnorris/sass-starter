@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use 'variables';
+
 ////
 /// Helper function to easily use an SVG inline in CSS
 /// without encoding it to base64, saving bytes.
@@ -51,11 +54,11 @@
 // https://css-tricks.com/snippets/sass/px-to-em-functions/
 // Use Ems, but no math to do when working from design programs
 @function em($pixels, $context: variables.$browser-context) {
-    @if (unitless($pixels)) {
+    @if (math.is-unitless($pixels)) {
         $pixels: $pixels * 1px;
     }
 
-    @if (unitless($context)) {
+    @if (math.is-unitless($context)) {
         $context: $context * 1px;
     }
 
