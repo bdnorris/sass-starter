@@ -1,6 +1,7 @@
 @use 'sass:math';
 @use 'sass:list';
 @use 'sass:map';
+@use 'sass:string';
 
 @use 'variables';
 
@@ -37,11 +38,11 @@
 // New version of the above using max()
 @mixin max-width-variable($max: $global-max-width, $block-padding: false) {
   @if $block-padding {
-    padding: $block-padding unquote("max(1.5rem, 50vw - " + $max + " / 2)");
+    padding: $block-padding string.unquote("max(1.5rem, 50vw - " + $max + " / 2)");
   } @else {
-    padding-inline: unquote("max(1.5rem, 50vw - " + $max + " / 2)");
+    padding-inline: string.unquote("max(1.5rem, 50vw - " + $max + " / 2)");
   }
-  @include breakpoint ($max, up) {
+  @include breakpoint($max, up) {
     @if $block-padding {
       padding: $block-padding unquote("max(2rem, 50vw - " + $max + " / 2)");
     } @else {
