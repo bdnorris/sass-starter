@@ -44,9 +44,9 @@
   }
   @include breakpoint($max, up) {
     @if $block-padding {
-      padding: $block-padding unquote("max(2rem, 50vw - " + $max + " / 2)");
+      padding: $block-padding string.unquote("max(2rem, 50vw - " + $max + " / 2)");
     } @else {
-      padding-inline: unquote("max(2rem, 50vw - " + $max + " / 2)");
+      padding-inline: string.unquote("max(2rem, 50vw - " + $max + " / 2)");
     }
   }
 }
