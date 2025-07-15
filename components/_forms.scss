@@ -3,9 +3,7 @@
 input[type='text'],
 input[type='email'],
 input[type='tel'],
-textarea {
-
-}
+textarea {}
 
 
 // select styling
@@ -37,12 +35,15 @@ textarea {
   background-position: right 0.7em top 50%, 0 0;
   background-size: 13px auto, 100%;
 }
+
 .select-css::-ms-expand {
   display: none;
 }
+
 .select-css:hover {
   border-color: #888;
 }
+
 .select-css:focus {
   border-color: #aaa;
   box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
@@ -50,6 +51,7 @@ textarea {
   color: #222;
   outline: none;
 }
+
 .select-css option {
   font-weight: normal;
 }

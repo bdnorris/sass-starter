@@ -23,10 +23,12 @@
   margin-left: variables.$mobile-margin;
   margin-right: variables.$mobile-margin;
   max-width: $max;
+
   @include breakpoint(large) {
     margin-left: variables.$desktop-margin;
     margin-right: variables.$desktop-margin;
   }
+
   @include breakpoint($max, up) {
     margin-left: auto;
     margin-right: auto;
@@ -39,13 +41,18 @@
 @mixin max-width-variable($max: $global-max-width, $block-padding: false) {
   @if $block-padding {
     padding: $block-padding string.unquote("max(1.5rem, 50vw - " + $max + " / 2)");
-  } @else {
+  }
+
+  @else {
     padding-inline: string.unquote("max(1.5rem, 50vw - " + $max + " / 2)");
   }
+
   @include breakpoint($max, up) {
     @if $block-padding {
       padding: $block-padding string.unquote("max(2rem, 50vw - " + $max + " / 2)");
-    } @else {
+    }
+
+    @else {
       padding-inline: string.unquote("max(2rem, 50vw - " + $max + " / 2)");
     }
   }
@@ -54,10 +61,10 @@
 @mixin visually-hidden {
   // accessible hide
   position: absolute;
-  left:     -10000px;
-  top:      auto;
-  width:    1px;
-  height:   1px;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
 }
 
@@ -80,22 +87,29 @@ $breakpoints: (
   $lastValue: if(list.length($values) > 2, list.nth($values, 3), false);
   // get the actual matching value from the list
   $str: map.get($breakpoints, $value);
+
   // if it's not in the list, then let's just used what was passed directly
   @if ($str) {
     $str: $str;
   }
+
   @else {
     $str: $value;
   }
-  @if ($direction == "down") {
+
+  @if ($direction =="down") {
     @media screen and (max-width: #{$str}) {
       @content;
     }
-  } @else if ($direction == "to") {
+  }
+
+  @else if ($direction =="to") {
     @media screen and (min-width: #{$str}) and (max-width: #{map.get($breakpoints, $lastValue)}) {
       @content;
     }
-  } @else {
+  }
+
+  @else {
     @media screen and (min-width: #{$str}) {
       @content;
     }

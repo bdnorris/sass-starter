@@ -3,70 +3,87 @@
 @use 'mixins';
 @use 'functions';
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: colors.$text;
 }
 
-h1, h2 {
+h1,
+h2 {
   text-wrap: balance;
 }
 
 // Scale based on Jason Pamental's
 // http://typecast.com/blog/a-more-modern-scale-for-web-typography
 
-h1, .h1 {
+h1,
+.h1 {
   font-family: variables.$sans;
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -1.5px;
   font-size: functions.em(32);
+
   @include mixins.breakpoint(large) {
     font-size: functions.em(40);
     line-height: 1.125;
   }
+
   @include mixins.breakpoint(xlarge) {
     font-size: functions.em(48);
     line-height: 1.05;
   }
 }
 
-h2, .h2 {
+h2,
+.h2 {
   font-family: variables.$sans;
   font-weight: 800;
   line-height: 1.153;
   letter-spacing: -0.5px;
   font-size: functions.em(26);
+
   @include mixins.breakpoint(large) {
     font-size: functions.em(32);
     line-height: 1.25;
   }
+
   @include mixins.breakpoint(xlarge) {
     font-size: functions.em(36);
   }
 }
 
-h3, .h3 {
+h3,
+.h3 {
   font-family: variables.$sans;
   font-weight: 800;
   line-height: 1.36;
   letter-spacing: 0;
   font-size: functions.em(22);
+
   @include mixins.breakpoint(large) {
     font-size: functions.em(24);
     line-height: 1.25;
   }
+
   @include mixins.breakpoint(xlarge) {
     font-size: functions.em(28);
   }
 }
 
-h4, .h4 {
+h4,
+.h4 {
   font-family: variables.$sans;
   font-weight: 800;
   line-height: 1.111;
   letter-spacing: 0.25px;
   font-size: functions.em(18);
   color: colors.$text-light;
+
   @include mixins.breakpoint(large) {
     font-size: functions.em(18);
     line-height: 1.222;
@@ -78,26 +95,31 @@ a {
   text-decoration: none;
 }
 
-p, .p {
+p,
+.p {
   font-weight: 400;
   color: colors.$text;
   line-height: 1.25;
   font-size: functions.em(16);
   max-width: 32em;
-	margin-block: 0.25em 0.333em;
-  	// if the next sibling is not a p
-	&:not(:has(+ p)) {
-		margin-block-end: 1em;
-	}
+  margin-block: 0.25em 0.333em;
+
+  // if the next sibling is not a p
+  &:not(:has(+ p)) {
+    margin-block-end: 1em;
+  }
+
   @include mixins.breakpoint(large) {
     line-height: 1.375;
   }
 }
 
 @supports (text-wrap: pretty) {
-	p, .p {
-		text-wrap: pretty;
-	}
+
+  p,
+  .p {
+    text-wrap: pretty;
+  }
 }
 
 sup {
