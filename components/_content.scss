@@ -4,5 +4,5 @@
 // * Could be used for layout styles
 
 article {
-  @include mixins.default-sizing(variables.$xlarge);
+  @include mixins.max-width-variable(variables.$max-width, 2em);
 }

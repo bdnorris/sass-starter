@@ -7,7 +7,7 @@ $large: 769px;
 $xlarge: 1201px;
 $xxlarge: 1441px;
 
-// Useful in the default-sizing mixin
+// Useful in the max-width-variable mixin
 $mobile-margin: 1.5em;
 $desktop-margin: 2em;
 
@@ -15,6 +15,8 @@ $desktop-margin: 2em;
 $browser-context: 16;
 $sans: sans-serif;
 $serif: sans-serif;
+
+$max-width: 1200px;
 
 // Animation
 $default-timing: 200ms;
