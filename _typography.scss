@@ -10,6 +10,7 @@ h4,
 h5,
 h6 {
   color: colors.$text;
+  line-height: calc(2px + 2ex + 2px); // https://moderncss.dev/generating-font-size-css-rules-and-creating-a-fluid-type-scale/
 }
 
 h1,
