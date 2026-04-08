@@ -82,9 +82,15 @@ $breakpoints: (
   // get the first value passed to the mixin
   $value: list.nth($values, 1);
   // Direction of media query (up, down, or to)
-  $direction: if(list.length($values) > 1, list.nth($values, 2), false);
+  $direction: null;
+  @if list.length($values) > 1 {
+    $direction: list.nth($values, 2);
+  }
   // if to, then get the third value
-  $lastValue: if(list.length($values) > 2, list.nth($values, 3), false);
+  $lastValue: null;
+  @if list.length($values) > 2 {
+    $lastValue: list.nth($values, 3);
+  }
   // get the actual matching value from the list
   $str: map.get($breakpoints, $value);
 
