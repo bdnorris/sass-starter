@@ -16,8 +16,8 @@
   padding: 0;
   margin: 0;
   font-family: inherit;
-  text-box-trim: trim;
-  text-box-edge: cap alphabetic;
+  text-box-trim: trim-both;
+  text-edge: cap;
 }
 
 // for centered elements with a max-width, see codepen for example. https://codepen.io/bdnorris/pen/ydeMgj
