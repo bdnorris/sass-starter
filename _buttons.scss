@@ -1,15 +1,15 @@
 @use 'mixins';
 
 button {
-  @include mixins.button-reset;
+	@include mixins.button-reset;
 }
 
 .button {
-  line-height: 1;
+	line-height: 1;
 }
 
 button.button {}
 
 a.button {
-  text-decoration: none;
+	text-decoration: none;
 }

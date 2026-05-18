@@ -15,23 +15,23 @@
 /// @param {String} $svg - SVG image to encode
 /// @return {String} - Encoded SVG data uri
 @function svg-uri($svg) {
-    $encoded: '';
-    $slice: 2000;
-    $index: 0;
-    $loops: math.ceil(math.div(string.length($svg), $slice));
+		$encoded: '';
+		$slice: 2000;
+		$index: 0;
+		$loops: math.ceil(math.div(string.length($svg), $slice));
 
-    @for $i from 1 through $loops {
-        $chunk: string.slice($svg, $index, $index + $slice - 1);
-        $chunk: str-replace($chunk, '"', "'");
-        $chunk: str-replace($chunk, '<', '%3C');
-        $chunk: str-replace($chunk, '>', '%3E');
-        $chunk: str-replace($chunk, '&', '%26');
-        $chunk: str-replace($chunk, '#', '%23');
-        $encoded: #{$encoded}#{$chunk};
-        $index: $index + $slice;
-    }
+		@for $i from 1 through $loops {
+				$chunk: string.slice($svg, $index, $index + $slice - 1);
+				$chunk: str-replace($chunk, '"', "'");
+				$chunk: str-replace($chunk, '<', '%3C');
+				$chunk: str-replace($chunk, '>', '%3E');
+				$chunk: str-replace($chunk, '&', '%26');
+				$chunk: str-replace($chunk, '#', '%23');
+				$encoded: #{$encoded}#{$chunk};
+				$index: $index + $slice;
+		}
 
-    @return url("data:image/svg+xml;charset=utf8,#{$encoded}");
+		@return url("data:image/svg+xml;charset=utf8,#{$encoded}");
 }
 
 /// Replace `$search` with `$replace` in `$string`
@@ -42,26 +42,26 @@
 /// @param {String} $replace ('') - New value
 /// @return {String} - Updated string
 @function str-replace($string, $search, $replace: '') {
-    $index: string.index($string, $search);
+		$index: string.index($string, $search);
 
-    @if $index {
-        @return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
-    }
+		@if $index {
+				@return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
+		}
 
-    @return $string;
+		@return $string;
 }
 
 
 // https://css-tricks.com/snippets/sass/px-to-em-functions/
 // Use Ems, but no math to do when working from design programs
 @function em($pixels, $context: variables.$browser-context) {
-    @if (math.is-unitless($pixels)) {
-        $pixels: $pixels * 1px;
-    }
+		@if (math.is-unitless($pixels)) {
+				$pixels: $pixels * 1px;
+		}
 
-    @if (math.is-unitless($context)) {
-        $context: $context * 1px;
-    }
+		@if (math.is-unitless($context)) {
+				$context: $context * 1px;
+		}
 
-    @return math.div($pixels, $context) * 1em;
+		@return math.div($pixels, $context) * 1em;
 }

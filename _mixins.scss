@@ -7,119 +7,119 @@
 
 // use in button elements to reset styles before adding your own.
 @mixin button-reset {
-  background-image: none;
-  background-color: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  -webkit-appearance: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font-family: inherit;
-  text-box-trim: trim-both;
-  text-edge: cap;
+	background-image: none;
+	background-color: transparent;
+	border-radius: 0;
+	box-shadow: none;
+	-webkit-appearance: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font-family: inherit;
+	text-box-trim: trim-both;
+	text-edge: cap;
 }
 
 // for centered elements with a max-width, see codepen for example. https://codepen.io/bdnorris/pen/ydeMgj
 @mixin default-sizing($max) {
-  margin-left: variables.$mobile-margin;
-  margin-right: variables.$mobile-margin;
-  max-width: $max;
+	margin-left: variables.$mobile-margin;
+	margin-right: variables.$mobile-margin;
+	max-width: $max;
 
-  @include breakpoint(large) {
-    margin-left: variables.$desktop-margin;
-    margin-right: variables.$desktop-margin;
-  }
+	@include breakpoint(large) {
+		margin-left: variables.$desktop-margin;
+		margin-right: variables.$desktop-margin;
+	}
 
-  @include breakpoint($max, up) {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: variables.$desktop-margin;
-    padding-right: variables.$desktop-margin;
-  }
+	@include breakpoint($max, up) {
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: variables.$desktop-margin;
+		padding-right: variables.$desktop-margin;
+	}
 }
 
 // New version of the above using max()
 @mixin max-width-variable($max: $global-max-width, $block-padding: false) {
-  @if $block-padding {
-    padding: $block-padding string.unquote("max(1.5rem, 50vw - " + $max + " / 2)");
-  }
+	@if $block-padding {
+		padding: $block-padding string.unquote("max(1.5rem, 50vw - " + $max + " / 2)");
+	}
 
-  @else {
-    padding-inline: string.unquote("max(1.5rem, 50vw - " + $max + " / 2)");
-  }
+	@else {
+		padding-inline: string.unquote("max(1.5rem, 50vw - " + $max + " / 2)");
+	}
 
-  @include breakpoint($max, up) {
-    @if $block-padding {
-      padding: $block-padding string.unquote("max(2rem, 50vw - " + $max + " / 2)");
-    }
+	@include breakpoint($max, up) {
+		@if $block-padding {
+			padding: $block-padding string.unquote("max(2rem, 50vw - " + $max + " / 2)");
+		}
 
-    @else {
-      padding-inline: string.unquote("max(2rem, 50vw - " + $max + " / 2)");
-    }
-  }
+		@else {
+			padding-inline: string.unquote("max(2rem, 50vw - " + $max + " / 2)");
+		}
+	}
 }
 
 @mixin visually-hidden {
-  // accessible hide
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+	// accessible hide
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
 }
 
 // BREAKPOINTS
 
 $breakpoints: (
-  small: 0,
-  medium: variables.$medium,
-  large: variables.$large,
-  xlarge: variables.$xlarge,
-  xxlarge: variables.$xxlarge
+	small: 0,
+	medium: variables.$medium,
+	large: variables.$large,
+	xlarge: variables.$xlarge,
+	xxlarge: variables.$xxlarge
 );
 
 @mixin breakpoint($values...) {
-  // get the first value passed to the mixin
-  $value: list.nth($values, 1);
-  // Direction of media query (up, down, or to)
-  $direction: null;
-  @if list.length($values) > 1 {
-    $direction: list.nth($values, 2);
-  }
-  // if to, then get the third value
-  $lastValue: null;
-  @if list.length($values) > 2 {
-    $lastValue: list.nth($values, 3);
-  }
-  // get the actual matching value from the list
-  $str: map.get($breakpoints, $value);
+	// get the first value passed to the mixin
+	$value: list.nth($values, 1);
+	// Direction of media query (up, down, or to)
+	$direction: null;
+	@if list.length($values) > 1 {
+		$direction: list.nth($values, 2);
+	}
+	// if to, then get the third value
+	$lastValue: null;
+	@if list.length($values) > 2 {
+		$lastValue: list.nth($values, 3);
+	}
+	// get the actual matching value from the list
+	$str: map.get($breakpoints, $value);
 
-  // if it's not in the list, then let's just used what was passed directly
-  @if ($str) {
-    $str: $str;
-  }
+	// if it's not in the list, then let's just used what was passed directly
+	@if ($str) {
+		$str: $str;
+	}
 
-  @else {
-    $str: $value;
-  }
+	@else {
+		$str: $value;
+	}
 
-  @if ($direction =="down") {
-    @media screen and (max-width: #{$str}) {
-      @content;
-    }
-  }
+	@if ($direction =="down") {
+		@media screen and (max-width: #{$str}) {
+			@content;
+		}
+	}
 
-  @else if ($direction =="to") {
-    @media screen and (min-width: #{$str}) and (max-width: #{map.get($breakpoints, $lastValue)}) {
-      @content;
-    }
-  }
+	@else if ($direction =="to") {
+		@media screen and (min-width: #{$str}) and (max-width: #{map.get($breakpoints, $lastValue)}) {
+			@content;
+		}
+	}
 
-  @else {
-    @media screen and (min-width: #{$str}) {
-      @content;
-    }
-  }
+	@else {
+		@media screen and (min-width: #{$str}) {
+			@content;
+		}
+	}
 }
