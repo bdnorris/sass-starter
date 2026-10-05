@@ -20,26 +20,7 @@
 	text-edge: cap;
 }
 
-// for centered elements with a max-width, see codepen for example. https://codepen.io/bdnorris/pen/ydeMgj
-@mixin default-sizing($max) {
-	margin-left: variables.$mobile-margin;
-	margin-right: variables.$mobile-margin;
-	max-width: $max;
-
-	@include breakpoint(large) {
-		margin-left: variables.$desktop-margin;
-		margin-right: variables.$desktop-margin;
-	}
-
-	@include breakpoint($max, up) {
-		margin-left: auto;
-		margin-right: auto;
-		padding-left: variables.$desktop-margin;
-		padding-right: variables.$desktop-margin;
-	}
-}
-
-// New version of the above using max()
+// for centered elements with a max-width
 @mixin max-width-variable($max: $global-max-width, $block-padding: false) {
 	@if $block-padding {
 		padding: $block-padding string.unquote("max(1.5rem, 50vw - " + $max + " / 2)");
