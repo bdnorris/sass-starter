@@ -104,3 +104,40 @@ $breakpoints: (
 		}
 	}
 }
+
+/* usage
+
+// UP IS DEFAULT, so the first example is the same as the second example
+
+@include mixins.breakpoint(medium) {
+	.my-class {
+		color: red;
+	}
+}
+COMPILED CSS:
+@media screen and (min-width: 376px)
+
+@include mixins.breakpoint(medium, up) {
+	.my-class {
+		color: red;
+	}
+}
+COMPILED CSS:
+@media screen and (min-width: 376px)
+
+@include mixins.breakpoint(medium, down) {
+	.my-class {
+		color: blue;
+	}
+}
+COMPILED CSS:
+@media screen and (max-width: 376px)
+
+@include mixins.breakpoint(medium, to, xlarge) {
+	.my-class {
+		color: green;
+	}
+}
+COMPILED CSS:
+@media screen and (min-width: 376px) and (max-width: 1280px)
+*/
