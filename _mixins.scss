@@ -20,26 +20,7 @@
 	text-edge: cap;
 }
 
-// for centered elements with a max-width, see codepen for example. https://codepen.io/bdnorris/pen/ydeMgj
-@mixin default-sizing($max) {
-	margin-left: variables.$mobile-margin;
-	margin-right: variables.$mobile-margin;
-	max-width: $max;
-
-	@include breakpoint(large) {
-		margin-left: variables.$desktop-margin;
-		margin-right: variables.$desktop-margin;
-	}
-
-	@include breakpoint($max, up) {
-		margin-left: auto;
-		margin-right: auto;
-		padding-left: variables.$desktop-margin;
-		padding-right: variables.$desktop-margin;
-	}
-}
-
-// New version of the above using max()
+// for centered elements with a max-width
 @mixin max-width-variable($max: $global-max-width, $block-padding: false) {
 	@if $block-padding {
 		padding: $block-padding string.unquote("max(1.5rem, 50vw - " + $max + " / 2)");
@@ -123,3 +104,40 @@ $breakpoints: (
 		}
 	}
 }
+
+/* usage
+
+// UP IS DEFAULT, so the first example is the same as the second example
+
+@include mixins.breakpoint(medium) {
+	.my-class {
+		color: red;
+	}
+}
+COMPILED CSS:
+@media screen and (min-width: 376px)
+
+@include mixins.breakpoint(medium, up) {
+	.my-class {
+		color: red;
+	}
+}
+COMPILED CSS:
+@media screen and (min-width: 376px)
+
+@include mixins.breakpoint(medium, down) {
+	.my-class {
+		color: blue;
+	}
+}
+COMPILED CSS:
+@media screen and (max-width: 376px)
+
+@include mixins.breakpoint(medium, to, xlarge) {
+	.my-class {
+		color: green;
+	}
+}
+COMPILED CSS:
+@media screen and (min-width: 376px) and (max-width: 1280px)
+*/
