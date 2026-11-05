@@ -2,10 +2,49 @@
 @use 'colors';
 // * base styles
 
-// Animate scrolling only if users don’t prefer reduced motion
+// Animate scrolling and view transitions only if users don’t prefer reduced motion
 @media (prefers-reduced-motion: no-preference) {
 	html {
 		scroll-behavior: smooth;
+  }
+	@view-transition {
+		navigation: auto;
+	}
+	::view-transition-group(auto) {
+		animation-duration: 2s;
+	}
+
+	.site-header {
+		view-transition-name: header;
+	}
+
+	.hero__heading {
+		view-transition-name: hero-heading;
+	}
+
+	// ::view-transition-old(hero-heading) {
+	// 	animation: fade-out 2s;
+	// }
+
+	// ::view-transition-new(hero-heading) {
+	// 	animation: fade-in 2s;
+	// }
+}
+
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }
 
